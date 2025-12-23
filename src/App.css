@@ -43,6 +43,7 @@ button:focus-visible {
   background-color: #1a1a1a;
   height: 80px;
   border-radius: 15px;
+  flex-wrap: wrap;
 }
 .colorespri, .coloressec, .coloresbar{
   display: flex;
@@ -52,4 +53,14 @@ button:focus-visible {
 }
 .colorespri label, .coloressec label,.coloresbar label{
   margin-right: 10px;
+}
+@media (max-width: 760px)  {
+  .colores{
+    height: 100px;
+  }
+}
+@media (max-width: 485px)  {
+  .colores{
+    height: 200px;
+  }
 }

@@ -277,7 +277,7 @@ useEffect(()=>{
             <input type="color" name="colSec" id="colSec"  defaultValue="#444cf7" onChange={(e)=> setSecundario(e.target.value)}/>
           </div>
           <div className="coloresbar">
-            <label htmlFor="colbar">Color Secundario</label>
+            <label htmlFor="colbar">Opacidad</label>
             <input type="range" min="0" max="1" step="0.1" value={opacidad} onChange={(e) => setOpacidad(e.target.value)} />
           </div>
         </div>

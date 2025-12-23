@@ -1,0 +1,55 @@
+h1,h2,p{
+  text-align: center;
+}
+.contenedor{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: space-around;
+  height: 400px;
+}
+.contenedor-bloques{
+  width: 200px;
+  height: 200px;
+  border: solid white;
+  background-color: red;
+  display: flex;
+  justify-content: end;
+}
+button {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.3em 0.6em;
+  font-size: 0.8em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.colores{
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  background-color: #1a1a1a;
+  height: 80px;
+  border-radius: 15px;
+}
+.colorespri, .coloressec, .coloresbar{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin: 10px;
+}
+.colorespri label, .coloressec label,.coloresbar label{
+  margin-right: 10px;
+}

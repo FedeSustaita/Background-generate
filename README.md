@@ -1,21 +1,40 @@
-<<<<<<< HEAD
-# React + Vite
+# CSS Background Generator 🎨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive CSS Background Generator built with React.  
+This application allows users to customize colors and opacity to generate dynamic CSS background patterns and copy the generated code instantly.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- Choose primary and secondary colors
+- Adjust background opacity
+- Generate multiple CSS background patterns
+- Copy ready-to-use CSS code to the clipboard
+- Real-time background preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Background-generate
-CSS Background Generator built with React. Allows users to customize primary and secondary colors and opacity to generate dynamic CSS background patterns, with the ability to instantly copy the generated CSS code to the clipboard.
->>>>>>> 9c4e8472756dcb4cd141e8269a79110015bfd0fb
+- React
+- JavaScript
+- CSS
+- HTML
+
+---
+
+## 📦 Run Locally
+
+1. Clone the repository:
+```bash
+git clone https://github.com/FedeSustaita/Background-generate.git
+```
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the project:
+```bash
+npm run dev
+```

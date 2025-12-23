@@ -6,13 +6,22 @@ const [id, setId]=useState(null)
 const [principal, setPrincipal]=useState('#e5e5f7')
 const [secundario, setSecundario]=useState('#444cf7')
 const [opacidad, setOpacidad]=useState(0.8)
+const [fav, setFav]=useState([])
+const [favList, setFavList]=useState(false)
+const [idFondo, setIdFondo]=useState(null)
+const [fondoColor, setFondoColor]=useState(false)
+
+useEffect(()=>{
+  const favorito = JSON.parse(localStorage.getItem('favoritos')) || []
+  setFav(favorito)
+},[])
+
 const hexToRgba = (hex, alpha = 1) => {
   const r = parseInt(hex.slice(1, 3), 16)
   const g = parseInt(hex.slice(3, 5), 16)
   const b = parseInt(hex.slice(5, 7), 16)
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
-
 
 useEffect(() => {
   const p = hexToRgba(principal, opacidad)
@@ -241,7 +250,12 @@ background-position: 10px 0, 10px 0, 0 0, 0 0;
   ])
 }, [principal, secundario, opacidad])
 
-
+useEffect(()=>{
+  localStorage.setItem('favoritos', JSON.stringify(fav))
+  if (!favList) {
+    setFavList(true)
+  }
+},[fav])
 
 useEffect(()=>{
     if (!fondos[0]) return
@@ -259,6 +273,28 @@ useEffect(()=>{
   copiar()
   
 },[id])
+
+useEffect(() => {
+  if (fondoColor) {
+    // Cambiamos el color del body
+    document.body.style.backgroundColor = `${fondos[idFondo-1].completo.backgroundColor}`;
+    document.body.style.backgroundImage = `${fondos[idFondo-1].completo.backgroundImage}`;
+    document.body.style.backgroundSize = `${fondos[idFondo-1].completo.backgroundSize}`;
+    document.body.style.backgroundPosition = `${fondos[idFondo-1].completo.backgroundPosition}`;
+
+    // Volvemos al color original después de 1 segundo
+    const timer = setTimeout(() => {
+      setFondoColor(false);
+      document.body.style.backgroundColor = '';
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }
+}, [fondoColor]);
+
   return (
     <>
       <header>
@@ -267,6 +303,27 @@ useEffect(()=>{
       <main>
         <h2>CSS Background generate</h2>
         <p>Useful backgrounds for your web pages</p>
+        {favList ? (
+          <>
+            <h3>Favoritos</h3>
+            <div className="contenedor-favoritos">
+              <ul>
+                {fondos .filter(e => fav.includes(e.id)) .map(e => (
+                    <li key={e.id}>
+                      <div className="contenedor-bloques" style={e.completo}>
+                        <button onClick={() => setId(e.id)}>Copiar</button>
+                        <button onClick={() => { setFav(fav.filter((id) => id !== e.id)) }} >
+                          🗑
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </>
+        ): (
+          <> </>
+        )}
         <div className="colores">
           <div className="colorespri">
             <label htmlFor="col">Color principal</label>
@@ -284,11 +341,29 @@ useEffect(()=>{
         <div className="contenedor">
           {fondos.map((e)=>(
             <div className="contenedor-bloques" style={e.completo} key={e.id}>
-              <button onClick={()=> setId(e.id)}> Copiar <i class="bi bi-copy"></i></button>
+              <button onClick={()=> setId(e.id)}> Copiar</button>
+              <button onClick={() => {
+                if(fav.includes(e.id)) {
+                  setFav(fav.filter(f => f !== e.id))
+                } else {
+                  setFav([...fav, e.id])
+                }
+              }}>
+                {fav.includes(e.id) ? '⭐' : '☆'}
+              </button>
+              <button onClick={()=>{
+                setFondoColor(true);
+                setIdFondo(e.id);
+              }}>👁️‍🗨️</button>
             </div>  
           ))}
         </div>
       </main>
+      <footer>
+        <h3>
+          @Federico Sustaita Fuentes
+        </h3>
+      </footer>
     </>
   )
 }

@@ -1,4 +1,4 @@
-h1,h2,p{
+h1,h2,p, h3{
   text-align: center;
 }
 .contenedor{
@@ -7,7 +7,6 @@ h1,h2,p{
   flex-wrap: wrap;
   gap: 80px;
   justify-content: space-around;
-  height: 400px;
 }
 .contenedor-bloques{
   width: 200px;
@@ -31,6 +30,8 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  scale: 1.1;
+  transition: all 0.2s;
 }
 button:focus,
 button:focus-visible {
@@ -54,6 +55,19 @@ button:focus-visible {
 .colorespri label, .coloressec label,.coloresbar label{
   margin-right: 10px;
 }
+.contenedor-bloques button{
+  margin: 5px;
+}
+.contenedor-favoritos ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: space-around;
+}
+.contenedor-favoritos li{ 
+  list-style: none;
+}
 @media (max-width: 760px)  {
   .colores{
     height: 100px;
@@ -63,4 +77,8 @@ button:focus-visible {
   .colores{
     height: 200px;
   }
+}
+footer{
+  border-top: solid white;
+  margin-top: 25px;
 }
